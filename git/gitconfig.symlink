@@ -1,6 +1,11 @@
 # Local/private config goes in the include
 [include]
         path = ~/.gitconfig.local
+[user]
+        name = Matt Dean
+        email = matt@trabian.com
+[credential]
+        helper = osxkeychain
 [hub]
         protocol = https
 [alias]
@@ -33,3 +38,5 @@
         default = simple
 [rebase]
 	autoStash = true
+[init]
+	defaultBranch = main

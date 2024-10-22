@@ -52,4 +52,25 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # # https://direnv.net
+# eval "$(direnv hook zsh)"
+
+# echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi'
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+
+# golang
+export GOPATH=$HOME/go
+export PATH="$GOPATH/bin:$PATH"
+
+# Flutter
+# export PATH="$PATH:/Users/mattdean/dev/tools/flutter/bin"
+
 eval "$(direnv hook zsh)"
+eval "$(rbenv init - zsh)"
+
+# VSCode is setting this to `0` for some reason, which causes crashes in some libraries
+unset MallocNanoZone
+source /Users/mattdean/.antilles/antilles_completion.zsh
+
+
+. "$HOME/.cargo/env"

@@ -42,3 +42,6 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
 # Show all files (including hidden) in the Finder
 defaults write com.apple.finder AppleShowAllFiles YES
+
+# Show iterm2 terminal more quickly
+defaults write com.googlecode.iterm2 HotkeyTermAnimationDuration -float 0.05
