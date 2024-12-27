@@ -28,6 +28,7 @@ brew 'zsh-autosuggestions'
 # brew 'wget'
 # brew 'yarn'
 
+cask 'google-chrome'
 cask 'notion'
 cask 'raycast'
 cask 'slack'

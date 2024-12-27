@@ -155,6 +155,15 @@
             "appdir": "/Applications"
           }
         }
+      },
+      "google-chrome": {
+        "version": "131.0.6778.86",
+        "options": {
+          "full_name": "google-chrome",
+          "args": {
+            "appdir": "/Applications"
+          }
+        }
       }
     }
   },
