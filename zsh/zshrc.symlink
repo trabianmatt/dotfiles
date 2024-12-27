@@ -1,3 +1,6 @@
+# For timing information, uncomment the zmodload line at the top and the zprof line at the bottom
+# zmodload zsh/zprof
+
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
@@ -57,7 +60,7 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 
 # golang
 export GOPATH=$HOME/go
-export PATH="$GOPATH/bin:$PATH"
+export PATH="/Applications/Docker.app/Contents/Resources/bin:$GOPATH/bin:$PATH"
 
 eval "$(direnv hook zsh)"
 # eval "$(rbenv init - zsh)"
@@ -72,3 +75,6 @@ eval "$(direnv hook zsh)"
 export STARSHIP_CONFIG=$ZSH/starship/starship.toml
 
 eval "$(starship init zsh)"
+
+# Print timing information for each command
+# zprof
