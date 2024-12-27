@@ -14,7 +14,7 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
 
 # Set a really fast key repeat.
-defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 
