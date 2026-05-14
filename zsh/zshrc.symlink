@@ -49,6 +49,9 @@ autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
+
+bindkey -e
+
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
@@ -61,6 +64,9 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 # golang
 export GOPATH=$HOME/go
 export PATH="/Applications/Docker.app/Contents/Resources/bin:$GOPATH/bin:$PATH"
+
+# Devcontainer tools (dc, etc.)
+export PATH="$HOME/dev/devcontainer-dotfiles/bin:$PATH"
 
 eval "$(direnv hook zsh)"
 # eval "$(rbenv init - zsh)"
@@ -78,3 +84,32 @@ eval "$(starship init zsh)"
 
 # Print timing information for each command
 # zprof
+
+. "$HOME/.local/bin/env"
+
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=$JAVA_HOME/bin:$PATH
+eval "$(~/.local/try.rb init ~/dev/tries)"
+
+export EDITOR=hx
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+eval "$(zoxide init zsh)"
+
+# This is for Claude Code to be able to use LSP tools
+export ENABLE_LSP_TOOLS=1
+
+alias chrome-debug='~/.pi/agent/skills/web-browser/start-chrome.sh'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/mattdean/dev/tools/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mattdean/dev/tools/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/mattdean/dev/tools/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mattdean/dev/tools/google-cloud-sdk/completion.zsh.inc'; fi

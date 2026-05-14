@@ -10,6 +10,12 @@
 #   safe-claude      — Claude Code (permission prompts disabled;
 #                       sandbox is the real security layer)
 #   safe-codex       — Codex CLI
+#   safe-pi / pi     — pi-coding-agent. `pi` is aliased to `safe-pi`
+#                       so it always runs sandboxed by default
+#                       (unlike claude/codex, which have an opt-in
+#                       safe- prefix).
+#   safe-omp / omp   — oh-my-pi. Same default-sandboxed alias pattern
+#                       as pi.
 #
 # The wrappers grant: workdir rw (default), clipboard (pbcopy/pbpaste),
 # plus whatever custom grants live in the personal overrides profile.
@@ -37,3 +43,13 @@ safe() {
 
 safe-claude() { safe claude --dangerously-skip-permissions "$@" }
 safe-codex()  { safe codex "$@" }
+safe-pi()     { safe pi "$@" }
+safe-omp()    { safe omp "$@" }
+
+# pi and omp default to sandboxed execution. Aliases expand only
+# in interactive shells / sourced rc files — scripts that invoke
+# `pi` / `omp` directly bypass this, which is the desired behavior
+# (script authors opt in to the safe- prefix explicitly when they
+# need it).
+alias pi=safe-pi
+alias omp=safe-omp
