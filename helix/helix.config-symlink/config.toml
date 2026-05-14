@@ -1,0 +1,30 @@
+# ~/.config/helix/config.toml
+
+theme = "catppuccin_mocha"
+
+[keys.normal]
+# Move lines up and down
+C-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+C-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+
+# ~/.config/helix/config.toml
+[keys.normal.C-y]
+# Open the file(s) in the current window
+y = ":sh zellij run -n Yazi -c -f -x 1%% -y 1%% --width 98%% --height 98%% -- bash ~/.config/helix/yazi-picker.sh open %{buffer_name}"
+# Open the file(s) in a vertical split
+v = ":sh zellij run -n Yazi -c -f -x 1%% -y 1%% --width 98%% --height 98%% -- bash ~/.config/helix/yazi-picker.sh vsplit %{buffer_name}"
+# Open the file(s) in a horizontal split
+h = ":sh zellij run -n Yazi -c -f -x 1%% -y 1%% --width 98%% --height 98%% -- bash ~/.config/helix/yazi-picker.sh hsplit %{buffer_name}"
+
+[editor]
+line-number = "relative"
+cursorline = true
+color-modes = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.indent-guides]
+render = true

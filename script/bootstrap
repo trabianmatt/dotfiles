@@ -130,9 +130,18 @@ install_dotfiles () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
+  # Direct dotfiles: topic/foo.symlink -> $HOME/.foo
   for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
   do
     dst="$HOME/.$(basename "${src%.*}")"
+    link_file "$src" "$dst"
+  done
+
+  # XDG configs: topic/foo.config-symlink -> $HOME/.config/foo
+  mkdir -p "$HOME/.config"
+  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.config-symlink' -not -path '*.git*')
+  do
+    dst="$HOME/.config/$(basename "${src%.*}")"
     link_file "$src" "$dst"
   done
 }
