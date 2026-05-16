@@ -117,8 +117,8 @@ rules = [
 	{ mime = "application/{pdf,doc,rtf}", fg = "#a6e3a1" },
 
 	# Fallback
-	{ name = "*", fg = "#cdd6f4" },
-	{ name = "*/", fg = "#74c7ec" }
+	{ mime = "*", fg = "#cdd6f4" },
+	{ mime = "inode/directory", fg = "#74c7ec" }
 ]
 
 [spot]
